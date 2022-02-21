@@ -14,17 +14,29 @@ import {
 } from "recharts";
 
 // entry function
-function DisplayLineChart({ month, xAxis }) {
+function DisplayLineChart({ month, xAxis, showTheseDays, footfall }) {
   const [showTheseFields, showCheckBoxes] = useCheckBoxes(() =>
     retrieveFields(month, xAxis)
   );
-  let dataSets = makeDataSets(month, showTheseFields, xAxis);
+  let dataSets = makeDataSets(
+    month,
+    showTheseFields,
+    xAxis,
+    showTheseDays,
+    footfall
+  );
   let LineData = [];
   let i = 0;
   for (let ele in dataSets[0]) {
     if (ele != xAxis) {
       LineData.push(
-        <Line type="monotone" dataKey={ele} stroke={strokes[i++]} key={ele} />
+        <Line
+          type="monotone"
+          dataKey={ele}
+          strokeWidth={2}
+          stroke={strokes[i++]}
+          key={ele}
+        />
       );
     }
   }

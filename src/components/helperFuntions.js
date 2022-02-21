@@ -1,5 +1,11 @@
 // makes datasets for chart according to what fields are to display,exluding the x-axis datakey
-export function makeDataSets(month, showTheseFields, xAxis) {
+export function makeDataSets(
+  month,
+  showTheseFields,
+  xAxis,
+  showTheseDays,
+  footfall
+) {
   let allDatasets = [];
   // calculating the length of xAxis
   let len = month[xAxis].length;
@@ -11,12 +17,24 @@ export function makeDataSets(month, showTheseFields, xAxis) {
 
   for (let i = 0; i < len; i++) {
     let singleDataset = {};
-    for (let field in month) {
-      // check if that field exist in fields then we will show that otherwise not,
-      if (fields.indexOf(field) !== -1) singleDataset[field] = month[field][i];
+    // console.log(showTheseDays[month["day"][i]]);
+    if (footfall && showTheseDays[month["day"][i]]) {
+      for (let field in month) {
+        // check if that field exist in fields then we will show that otherwise not,
+        if (fields.indexOf(field) !== -1)
+          singleDataset[field] = month[field][i];
+      }
+      allDatasets.push(singleDataset);
+    } else if (footfall == false) {
+      for (let field in month) {
+        // check if that field exist in fields then we will show that otherwise not,
+        if (fields.indexOf(field) !== -1)
+          singleDataset[field] = month[field][i];
+      }
+      allDatasets.push(singleDataset);
     }
-    allDatasets.push(singleDataset);
   }
+  console.log(allDatasets);
   return allDatasets;
 }
 
@@ -24,7 +42,8 @@ export function makeDataSets(month, showTheseFields, xAxis) {
 export function retrieveFields(month, xAxis) {
   let obj = {};
   for (let field in month) {
-    if (field !== xAxis) obj[field] = true;
+    if (field !== xAxis && field != "offerToNumber" && field != "day")
+      obj[field] = true;
   }
   return obj;
 }
