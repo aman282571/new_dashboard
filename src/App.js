@@ -20,27 +20,27 @@ function App() {
   });
   useEffect(() => {
     // fethcing data from firebase
-    // firedb
-    //   .child("/")
-    //   .once("value")
-    //   .then((snapshot) => {
-    //     if (snapshot.val() != null) {
-    //       let data = snapshot.val();
-    //       data.forEach((eachCenter) => {
-    //         addAvgCostToStore(eachCenter[1]);
-    //       });
-    //       // console.log(data);
-    //       setState({ isLoading: false, isError: false, store: data, index: 0 });
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setState({ isLoading: false, isError: true, store: "" });
-    //   });
-    data.forEach((eachCenter) => {
-      addAvgCostToStore(eachCenter[1]);
-      setState({ isLoading: false, isError: false, store: data, index: 0 });
-    });
+    firedb
+      .child("/")
+      .once("value")
+      .then((snapshot) => {
+        if (snapshot.val() != null) {
+          let data = snapshot.val();
+          data.forEach((eachCenter) => {
+            addAvgCostToStore(eachCenter[1]);
+          });
+          // console.log(data);
+          setState({ isLoading: false, isError: false, store: data, index: 0 });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setState({ isLoading: false, isError: true, store: "" });
+      });
+    // data.forEach((eachCenter) => {
+    //   addAvgCostToStore(eachCenter[1]);
+    //   setState({ isLoading: false, isError: false, store: data, index: 0 });
+    // });
   }, []);
   function changeCenter(e) {
     setState({ ...state, index: parseInt(e.target.value) });

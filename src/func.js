@@ -1,20 +1,10 @@
 // used to make array of integers
-// function makeArrayOfIntegers(dates) {
-//   return dates.split("\n").map((ele) => parseInt(ele));
-// }
-// let data = ``;
-// console.log(makeArrayOfIntegers(data));
-
-// used to make  x-axis of footfall
-
-function xAxis(dates, days) {
-  let arrDate = dates.split("\n");
-  let arrDay = days.split("\n").map((weekday) => weekday.slice(0, 3));
-  let xAxis = [];
-  for (let i = 0; i < arrDate.length; i++) xAxis.push(arrDate[i] + arrDay[i]);
-  return xAxis;
+function makeArray(dates) {
+  let res = dates.split("\n").map((ele) => ele);
+  if (isNaN(res[0][0])) return res;
+  else return res.map((ele) => parseInt(ele));
 }
-let dates = `1
+let data = `1
 2
 3
 4
@@ -45,6 +35,8 @@ let dates = `1
 29
 30
 31`;
+console.log(makeArray(data));
+
 let days = `Fri
 Sat
 Sun
@@ -76,7 +68,7 @@ Thurs
 Fri
 Sat
 Sun`;
-console.log(xAxis(dates, days));
+console.log(makeArray(days));
 
 /*
  Important conditions
