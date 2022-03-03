@@ -1,10 +1,23 @@
-// used to make array of integers
 function makeArray(dates) {
   let res = dates.split("\n").map((ele) => ele);
   if (isNaN(res[0][0])) return res;
   else return res.map((ele) => parseInt(ele));
 }
-let data = `1
+
+// console.log(makeArray(data));
+
+function month(date, days, offer1, offer2, offer3, offer4, offer5) {
+  let obj = {};
+  obj.offer1 = makeArray(offer1);
+  obj.offer2 = makeArray(offer2);
+  obj.offer3 = makeArray(offer3);
+  obj.offer4 = makeArray(offer4);
+  obj.offer5 = makeArray(offer5);
+  obj.days = makeArray(days);
+  obj.date = makeArray(date);
+  console.log(obj);
+}
+let date = `1
 2
 3
 4
@@ -31,44 +44,191 @@ let data = `1
 25
 26
 27
-28
-29
+28`;
+let days = `Tues
+Wed
+Thurs
+Fri
+Sat
+Sun
+Mon
+Tues
+Wed
+Thurs
+Fri
+Sat
+Sun
+Mon
+Tues
+Wed
+Thurs
+Fri
+Sat
+Sun
+Mon
+Tues
+Wed
+Thurs
+Fri
+Sat
+Sun
+Mon`;
+let offer1 = `52
+12
+34
+25
+41
+166
 30
-31`;
-console.log(makeArray(data));
+16
+13
+32
+52
+84
+150
+49
+22
+29
+33
+39
+93
+110
+46
+17
+6
+4
+37
+87
+150
+19`;
+let offer2 = `0
+1
+0
+3
+5
+1
+0
+0
+0
+2
+0
+2
+5
+6
+0
+3
+5
+0
+8
+2
+0
+0
+0
+0
+0
+15
+5
+0`;
+let offer3 = `0
+0
+0
+0
+0
+5
+0
+10
+12
+0
+0
+18
+5
+0
+0
+0
+0
+0
+0
+4
+4
+0
+0
+0
+0
+0
+0
+0`;
+let offer4 = `6
+11
+6
+10
+21
+53
+21
+18
+8
+9
+22
+54
+68
+39
+10
+22
+9
+5
+33
+60
+9
+4
+8
+6
+6
+38
+51
+1`;
+let offer5 = `0
+0
+0
+0
+2
+21
+0
+0
+0
+0
+0
+0
+6
+0
+16
+0
+0
+0
+2
+6
+0
+0
+0
+0
+6
+4
+2
+0`;
 
-let days = `Fri
-Sat
-Sun
-Mon
-Tues
-Wed
-Thurs
-Fri
-Sat
-Sun
-Mon
-Tues
-Wed
-Thurs
-Fri
-Sat
-Sun
-Mon
-Tues
-Wed
-Thurs
-Fri
-Sat
-Sun
-Mon
-Tues
-Wed
-Thurs
-Fri
-Sat
-Sun`;
-console.log(makeArray(days));
+month(date, days, offer1, offer2, offer3, offer4, offer5);
+
+// used to make array of integers
+// function makeArray(dates) {
+//   let res = dates.split("\n").map((ele) => ele);
+//   if (isNaN(res[0][0])) return res;
+//   else return res.map((ele) => parseInt(ele));
+// }
+// let data = `10011
+// 27529
+// 23929
+// 66225
+// 9866
+// 7110`;
+// console.log(makeArray(data));
 
 /*
  Important conditions

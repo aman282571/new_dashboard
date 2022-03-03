@@ -7,7 +7,7 @@ import Expenses from "./components/Expenses";
 import AvgCost from "./components/AvgCost";
 import NotFound from "./components/helpers/NotFound";
 import addAvgCostToStore from "./data";
-import { data } from "./data";
+// import { data } from "./data";
 
 import { Routes, Route } from "react-router-dom";
 import firedb from "./components/firebase";
@@ -29,7 +29,7 @@ function App() {
           data.forEach((eachCenter) => {
             addAvgCostToStore(eachCenter[1]);
           });
-          // console.log(data);
+          console.log(data);
           setState({ isLoading: false, isError: false, store: data, index: 0 });
         }
       })

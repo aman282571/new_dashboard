@@ -17,8 +17,7 @@ export function makeDataSets(
 
   for (let i = 0; i < len; i++) {
     let singleDataset = {};
-    // console.log(showTheseDays[month["day"][i]]);
-    if (footfall && showTheseDays[month["day"][i]]) {
+    if (footfall && showTheseDays[month["days"][i]]) {
       for (let field in month) {
         // check if that field exist in fields then we will show that otherwise not,
         if (fields.indexOf(field) !== -1)
@@ -34,7 +33,7 @@ export function makeDataSets(
       allDatasets.push(singleDataset);
     }
   }
-  console.log(allDatasets);
+  // console.log(allDatasets);
   return allDatasets;
 }
 
@@ -42,7 +41,7 @@ export function makeDataSets(
 export function retrieveFields(month, xAxis) {
   let obj = {};
   for (let field in month) {
-    if (field !== xAxis && field != "offerToNumber" && field != "day")
+    if (field !== xAxis && field != "offerToNumber" && field != "days")
       obj[field] = true;
   }
   return obj;
